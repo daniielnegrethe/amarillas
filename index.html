@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores Amarillas Para Daniela</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fffaf0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #b8860b;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            font-family: 'Georgia', serif;
+            font-size: 36px;
+        }
+        
+        .message {
+            font-size: 18px;
+            color: #8b4513;
+            margin: 30px 0;
+            line-height: 1.8;
+            font-family: 'Georgia', serif;
+        }
+        
+        .special-quote {
+            font-size: 24px;
+            font-weight: bold;
+            color: #b8860b;
+            margin: 40px 0;
+            font-style: italic;
+            line-height: 1.4;
+            position: relative;
+            padding: 0 30px;
+        }
+        
+        .special-quote:before, .special-quote:after {
+            content: '"';
+            font-size: 48px;
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .special-quote:before {
+            left: 0;
+            top: -20px;
+        }
+        
+        .special-quote:after {
+            right: 0;
+            bottom: -40px;
+        }
+        
+        .signature {
+            margin-top: 40px;
+            font-style: italic;
+            color: #8b4513;
+            font-size: 20px;
+        }
+        
+        .date {
+            margin-top: 15px;
+            color: #b8860b;
+            font-size: 16px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.1);
+            padding: 40px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: appear 1s ease-out forwards 0.5s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(184, 134, 11, 0.2);
+        }
+        
+        @keyframes appear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .sunflower-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .sunflower {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: gentle-float 6s ease-in-out infinite alternate;
+        }
+        
+        .sunflower-small-left {
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            transform: translate(-50%, -50%) scale(0.5);
+            animation: gentle-float 7s ease-in-out infinite alternate;
+        }
+        
+        .sunflower-small-right {
+            position: absolute;
+            top: 50%;
+            left: 80%;
+            transform: translate(-50%, -50%) scale(0.5);
+            animation: gentle-float 8s ease-in-out infinite alternate-reverse;
+        }
+        
+        @keyframes gentle-float {
+            0% { transform: translate(-50%, -50%) rotate(-3deg) scale(1); }
+            100% { transform: translate(-50%, -50%) rotate(3deg) scale(1); }
+        }
+        
+        .sunflower-small-left {
+            animation: gentle-float-small-left 7s ease-in-out infinite alternate;
+        }
+        
+        .sunflower-small-right {
+            animation: gentle-float-small-right 8s ease-in-out infinite alternate-reverse;
+        }
+        
+        @keyframes gentle-float-small-left {
+            0% { transform: translate(-50%, -50%) rotate(-3deg) scale(0.5); }
+            100% { transform: translate(-50%, -50%) rotate(3deg) scale(0.5); }
+        }
+        
+        @keyframes gentle-float-small-right {
+            0% { transform: translate(-50%, -50%) rotate(-3deg) scale(0.5); }
+            100% { transform: translate(-50%, -50%) rotate(3deg) scale(0.5); }
+        }
+        
+        .petal {
+            position: absolute;
+            width: 40px;
+            height: 80px;
+            background-color: #ffd700;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform-origin: center bottom;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .center {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #8b4513 30%, #654321 100%);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        
+        .seed {
+            position: absolute;
+            width: 4px;
+            height: 6px;
+            background-color: #f8f8ff;
+            border-radius: 50%;
+            transform: rotate(var(--rotate));
+            transform-origin: center;
+        }
+        
+        .decoration {
+            position: absolute;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .decoration-1 {
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: #ffd700;
+            border-radius: 50%;
+        }
+        
+        .decoration-2 {
+            bottom: -30px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+            background-color: #ffd700;
+            border-radius: 50%;
+        }
+        
+        .golden-border {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(184, 134, 11, 0.3);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+        
+        .petals-falling-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .falling-petal {
+            position: absolute;
+            background-color: #ffd700;
+            opacity: 0.7;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: falling linear infinite;
+        }
+        
+        @keyframes falling {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(calc(100vh + 50px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .heart-border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .watermark {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: rgba(139, 69, 19, 0.3);
+            font-style: italic;
+            font-size: 14px;
+            padding: 5px 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .sunflower-container {
+                height: 200px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .special-quote {
+                font-size: 20px;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="decoration decoration-1"></div>
+            <div class="decoration decoration-2"></div>
+            <div class="golden-border"></div>
+            
+            <h1>Flores Amarillas Para Daniela</h1>
+            
+            <div class="sunflower-container">
+                <!-- Flor principal -->
+                <div class="sunflower">
+                    <!-- Girasol elegante SVG -->
+                    <svg width="300" height="300" viewBox="0 0 300 300">
+                        <!-- Pétalos exteriores -->
+                        <g>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(0 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(20 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(40 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(60 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(80 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(100 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(120 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(140 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(160 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(180 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(200 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(220 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(240 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(260 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(280 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(300 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(320 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(340 150 150)"/>
+                        </g>
+                        
+                        <!-- Segundo nivel de pétalos -->
+                        <g opacity="0.9">
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(10 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(30 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(50 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(70 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(90 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(110 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(130 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(150 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(170 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(190 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(210 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(230 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(250 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(270 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(290 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(310 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(330 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(350 150 150)"/>
+                        </g>
+                        
+                        <!-- Centro -->
+                        <circle cx="150" cy="150" r="40" fill="url(#centerGradient)"/>
+                        <defs>
+                            <radialGradient id="centerGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                                <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+                                <stop offset="70%" style="stop-color:#654321;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#3E2723;stop-opacity:1" />
+                            </radialGradient>
+                        </defs>
+                        
+                        <!-- Semillas decorativas -->
+                        <g stroke="#F5DEB3" stroke-width="0.5">
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(0 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(10 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(20 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(30 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(40 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(50 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(60 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(70 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(80 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(90 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(100 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(110 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(120 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(130 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(140 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(150 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(160 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(170 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(180 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(190 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(200 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(210 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(220 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(230 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(240 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(250 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(260 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(270 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(280 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(290 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(300 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(310 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(320 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(330 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(340 150 150)"/>
+                            <line x1="150" y1="130" x2="150" y2="138" transform="rotate(350 150 150)"/>
+                        </g>
+                    </svg>
+                </div>
+                
+                <!-- Flor pequeña izquierda -->
+                <div class="sunflower-small-left">
+                    <svg width="300" height="300" viewBox="0 0 300 300">
+                        <!-- Pétalos exteriores -->
+                        <g>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(0 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(20 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(40 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(60 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(80 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(100 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(120 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(140 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(160 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(180 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(200 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(220 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(240 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(260 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(280 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(300 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(320 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(340 150 150)"/>
+                        </g>
+                        
+                        <!-- Segundo nivel de pétalos -->
+                        <g opacity="0.9">
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(10 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(30 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(50 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(70 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(90 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(110 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(130 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(150 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(170 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(190 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(210 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(230 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(250 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(270 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(290 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(310 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(330 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(350 150 150)"/>
+                        </g>
+                        
+                        <!-- Centro -->
+                        <circle cx="150" cy="150" r="40" fill="url(#centerGradient)"/>
+                    </svg>
+                </div>
+                
+                <!-- Flor pequeña derecha -->
+                <div class="sunflower-small-right">
+                    <svg width="300" height="300" viewBox="0 0 300 300">
+                        <!-- Pétalos exteriores -->
+                        <g>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(0 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(20 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(40 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(60 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(80 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(100 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(120 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(140 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(160 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(180 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(200 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(220 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(240 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(260 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(280 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(300 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(320 150 150)"/>
+                            <path d="M150,60 Q170,30 150,0 Q130,30 150,60" fill="#FFD700" stroke="#E6C200" stroke-width="1" transform="rotate(340 150 150)"/>
+                        </g>
+                        
+                        <!-- Segundo nivel de pétalos -->
+                        <g opacity="0.9">
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(10 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(30 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(50 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(70 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(90 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(110 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(130 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(150 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(170 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(190 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(210 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(230 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(250 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(270 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(290 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(310 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(330 150 150)"/>
+                            <path d="M150,90 Q175,60 150,30 Q125,60 150,90" fill="#F4C430" stroke="#E6B800" stroke-width="1" transform="rotate(350 150 150)"/>
+                        </g>
+                        
+                        <!-- Centro -->
+                        <circle cx="150" cy="150" r="40" fill="url(#centerGradient)"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="special-quote">
+                Esta flor amarilla es eterna como lo que siento por ti
+            </div>
+            
+            <div class="message">
+                Querida Daniela Antamirano Diaz, este girasol simboliza todo lo que siento por ti. Así como esta flor busca siempre la luz del sol, yo siempre busco tu sonrisa y tu felicidad. Cada pétalo dorado representa un momento especial que hemos compartido juntos. Te amo con todo mi corazón y quiero que sepas que mis sentimientos por ti son eternos, como esta flor digital que nunca se marchitará.
+            </div>
+            
+            <div class="signature">
+                Con todo mi amor,<br>
+                Geovani Daniel
+            </div>
+            
+            <div class="date">
+                21 de Marzo de 2025
+            </div>
+            
+            <!-- Marca de agua -->
+            <div class="watermark">
+                Realizado con amor para ti ATTe. Daniel Negrete
+            </div>
+            
+            <!-- Animación de pétalos cayendo -->
+            <div class="petals-falling-animation" id="petalContainer"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Crear pétalos cayendo
+        document.addEventListener('DOMContentLoaded', () => {
+            const petalContainer = document.getElementById('petalContainer');
+            const totalPetals = 20;
+            
+            for (let i = 0; i < totalPetals; i++) {
+                createPetal();
+            }
+            
+            function createPetal() {
+                const petal = document.createElement('div');
+                petal.classList.add('falling-petal');
+                
+                // Tamaño aleatorio
+                const size = Math.floor(Math.random() * 15) + 10;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size * 2}px`;
+                
+                // Posición inicial aleatoria
+                const posX = Math.floor(Math.random() * 100);
+                petal.style.left = `${posX}%`;
+                
+                // Duración aleatoria
+                const duration = Math.floor(Math.random() * 10) + 10;
+                petal.style.animationDuration = `${duration}s`;
+                
+                // Retraso aleatorio
+                const delay = Math.floor(Math.random() * 10);
+                petal.style.animationDelay = `${delay}s`;
+                
+                petalContainer.appendChild(petal);
+                
+                // Reemplazar el pétalo después de que termine su animación
+                setTimeout(() => {
+                    petal.remove();
+                    createPetal();
+                }, (duration + delay) * 1000);
+            }
+        });
+    </script>
+</body>
+</html>
